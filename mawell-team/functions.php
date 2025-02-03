@@ -229,7 +229,7 @@ function maxxwell_scripts()
     }
 
     /** enqueue  custom file CSS */
-    wp_enqueue_script('alpine-js', 'https://cdn.jsdelivr.net/npm/alpinejs@2'); // TODO: DRAGAN: Prebaci lokalno
+    wp_enqueue_script('alpine-js', get_template_directory_uri() . '/assets/dist/js/gallery.js', array(), _S_VERSION, true);
 
 	// Dobijanje URL-a teme ili child teme
 	$theme_url = get_template_directory_uri(); // Ako koristite child temu, zamenite sa get_stylesheet_directory_uri()
@@ -257,10 +257,23 @@ function tailwind_dashboards_script($hook): void
     $screen = get_current_screen();
     if ($screen->is_block_editor) {
         wp_enqueue_style('tailwind-dashboard', get_template_directory_uri() . '/style.css');
-        wp_enqueue_script('alpine-js', 'https://cdn.jsdelivr.net/npm/alpinejs@2'); // TODO: DRAGAN: Prebaci lokalno
-        //wp_enqueue_script('auth', get_template_directory_uri() . '/assets/dist/js/main.js', array(), _S_VERSION, false); // TODO: Ovo nije dobro, sve mi se pakuje ovde a mozda ne treba
-        //wp_enqueue_script('dashboard-maxwell', get_template_directory_uri() . '/assets/dashboard/dashboard.js', array(), _S_VERSION, false); // TODO: Iskljucivo za funkcije dahboarda
-    }
+
+
+	    // Dodavanje lokalnih CSS fajlova (Swiper i GLightbox)
+	    wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/dist/css/swiper-bundle.css', array(), null);
+	    wp_enqueue_style('glightbox-style', get_template_directory_uri() . '/assets/dist/css/lightbox.css', array(), null);
+	    // Dodavanje eksternog CSS fajla (Tabler Icons)
+	    wp_enqueue_style('tabler-icons', get_template_directory_uri() . '/assets/dist/css/tabler-icons.min.css', array(), null);
+
+
+	    wp_enqueue_script('alpine-js', get_template_directory_uri() . '/assets/dist/js/gallery.js', array(), _S_VERSION, true);
+	    wp_enqueue_script('auth-js', get_template_directory_uri() . '/assets/dist/js/auth.js', array('jquery'), null, true);
+		wp_enqueue_script('glightbox-js', get_template_directory_uri() . '/assets/dist/js/glightbox.js', array('jquery'), null, true);
+	    wp_enqueue_script('head-js', get_template_directory_uri() . '/assets/dist/js/head.js', array('jquery'), null, true);
+	    wp_enqueue_script('swiper-js', get_template_directory_uri() . '/assets/dist/js/swiper.js', array('jquery'), null, true);
+
+	    wp_enqueue_script('theme-js', get_template_directory_uri() . '/assets/dist/js/theme.js', array('jquery'), null, true);
+	}
 }
 add_action('admin_enqueue_scripts', 'tailwind_dashboards_script');
 /** ======================================================================= */
