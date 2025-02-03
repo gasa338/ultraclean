@@ -3,7 +3,7 @@
 import Swiper from "swiper/bundle";
 import { Thumbs, FreeMode, Navigation, Autoplay } from "swiper/modules";
 
-export default function initSwiper() {
+function init() {
   function mySwiper() {
     var thumbSwiper = new Swiper(".mySwiper", {
       modules: [Thumbs, FreeMode, Navigation],
@@ -65,6 +65,7 @@ export default function initSwiper() {
     new Swiper("#auth_swiper", {
       modules: [Thumbs, FreeMode],
       slidesPerView: 1,
+      spaceBetween: 30,
       spaceBetween: 30,
       centeredSlides: true,
       loop: true,
@@ -147,3 +148,4 @@ export default function initSwiper() {
   testimonials_swiper();
   feedback_swiper();
 }
+init();

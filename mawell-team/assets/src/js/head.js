@@ -70,4 +70,4 @@ class ThemeCustomizer {
   }
 }
 
-module.exports = ThemeCustomizer;
+new ThemeCustomizer().init();

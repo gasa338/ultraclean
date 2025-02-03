@@ -81,4 +81,4 @@ class Auth {
   }
 }
 
-module.exports = Auth
+new Auth().init();

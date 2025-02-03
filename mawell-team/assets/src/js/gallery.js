@@ -2,7 +2,7 @@
 
 import Shuffle from "shufflejs";
 
-export default class Demo {
+class Demo {
   constructor(element) {
     this.element = element;
     this.shuffle = new Shuffle(element, {
@@ -58,3 +58,6 @@ export default class Demo {
   }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  window.demo = new Demo(document.getElementById("gallery-wrapper"));
+});

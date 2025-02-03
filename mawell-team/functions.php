@@ -214,19 +214,34 @@ function maxxwell_scripts()
     wp_enqueue_style('maxxwell-style', get_stylesheet_uri(), array(), _S_VERSION);
     wp_style_add_data('maxxwell-style', 'rtl', 'replace');
 
-    wp_enqueue_script('maxxwell-navigation', get_template_directory_uri() . '/assets/dist/js/navigation.js', array(), _S_VERSION, true);
+	// Dodavanje lokalnih CSS fajlova (Swiper i GLightbox)
+	wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/dist/css/swiper-bundle.css', array(), null);
+	wp_enqueue_style('glightbox-style', get_template_directory_uri() . '/assets/dist/css/lightbox.css', array(), null);
+
+	// Dodavanje eksternog CSS fajla (Tabler Icons)
+	wp_enqueue_style('tabler-icons', get_template_directory_uri() . '/assets/dist/css/tabler-icons.min.css', array(), null);
+
+
+	wp_enqueue_script('maxxwell-navigation', get_template_directory_uri() . '/assets/dist/js/navigation.js', array(), _S_VERSION, true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
 
-
-    /** enqueue  custom file CSS */
-//    wp_enqueue_style( 'tailwind-front', get_template_directory_uri() . '/assets/dist/output.css' );
-
     /** enqueue  custom file CSS */
     wp_enqueue_script('alpine-js', 'https://cdn.jsdelivr.net/npm/alpinejs@2'); // TODO: DRAGAN: Prebaci lokalno
-    wp_enqueue_script('auth', get_template_directory_uri() . '/assets/dist/js/main.js', array(), _S_VERSION, true);
+
+	// Dobijanje URL-a teme ili child teme
+	$theme_url = get_template_directory_uri(); // Ako koristite child temu, zamenite sa get_stylesheet_directory_uri()
+
+	// Enqueue JavaScript fajlova za frontend
+//	wp_enqueue_script('auth-js', get_template_directory_uri() . '/assets/dist/js/auth.js', array('jquery'), null, true);
+//	wp_enqueue_script('glightbox-js', get_template_directory_uri() . '/assets/dist/js/glightbox.js', array('jquery'), null, true);
+	wp_enqueue_script('head-js', get_template_directory_uri() . '/assets/dist/js/head.js', array('jquery'), null, true);
+	wp_enqueue_script('swiper-js', get_template_directory_uri() . '/assets/dist/js/swiper.js', array('jquery'), null, true);
+	wp_enqueue_script('theme-js', get_template_directory_uri() . '/assets/dist/js/theme.js', array('jquery'), null, true);
+
+
 }
 add_action('wp_enqueue_scripts', 'maxxwell_scripts');
 
@@ -243,17 +258,13 @@ function tailwind_dashboards_script($hook): void
     if ($screen->is_block_editor) {
         wp_enqueue_style('tailwind-dashboard', get_template_directory_uri() . '/style.css');
         wp_enqueue_script('alpine-js', 'https://cdn.jsdelivr.net/npm/alpinejs@2'); // TODO: DRAGAN: Prebaci lokalno
-        wp_enqueue_script('auth', get_template_directory_uri() . '/assets/dist/js/main.js', array(), _S_VERSION, false); // TODO: Ovo nije dobro, sve mi se pakuje ovde a mozda ne treba
-        wp_enqueue_script('dashboard-maxwell', get_template_directory_uri() . '/assets/dashboard/dashboard.js', array(), _S_VERSION, false); // TODO: Iskljucivo za funkcije dahboarda
+        //wp_enqueue_script('auth', get_template_directory_uri() . '/assets/dist/js/main.js', array(), _S_VERSION, false); // TODO: Ovo nije dobro, sve mi se pakuje ovde a mozda ne treba
+        //wp_enqueue_script('dashboard-maxwell', get_template_directory_uri() . '/assets/dashboard/dashboard.js', array(), _S_VERSION, false); // TODO: Iskljucivo za funkcije dahboarda
     }
 }
 add_action('admin_enqueue_scripts', 'tailwind_dashboards_script');
 /** ======================================================================= */
 
-/**
- * Implement Maxwell_Block_Finder
- */
-require get_template_directory() . '/inc/classes/Maxwell_Block_Finder.php';
 
 /**
  * Walker_Nav_Menu

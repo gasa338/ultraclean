@@ -103,6 +103,7 @@ function acf_blocks_init_portfolio(): void {
                 'jsx'   => true,
             ),
             'render_template' => 'blocks/portfolio/portfolio-startup/portfolio-startup.php',
+            'enqueue_script'    => get_template_directory_uri() . '/assets/dist/js/glightbox.js',
         ) );
 
         /** ==============================
@@ -120,6 +121,7 @@ function acf_blocks_init_portfolio(): void {
                 'jsx'   => true,
             ),
             'render_template' => 'blocks/portfolio/portfolio-web-designer/portfolio-web-designer.php',
+            'enqueue_script'    => get_template_directory_uri() . '/assets/dist/js/gallery.js',
         ) );
     }
 }

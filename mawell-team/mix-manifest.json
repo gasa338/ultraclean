@@ -1,4 +1,9 @@
 {
-    "/assets/dist/js/main.js": "/assets/dist/js/main.js",
-    "/assets/dashboard/dashboard.js": "/assets/dashboard/dashboard.js"
+    "/assets/dist/js/gallery.js": "/assets/dist/js/gallery.js",
+    "/assets/dist/js/admin.js": "/assets/dist/js/admin.js",
+    "/assets/dist/js/auth.js": "/assets/dist/js/auth.js",
+    "/assets/dist/js/glightbox.js": "/assets/dist/js/glightbox.js",
+    "/assets/dist/js/head.js": "/assets/dist/js/head.js",
+    "/assets/dist/js/swiper.js": "/assets/dist/js/swiper.js",
+    "/assets/dist/js/theme.js": "/assets/dist/js/theme.js"
 }

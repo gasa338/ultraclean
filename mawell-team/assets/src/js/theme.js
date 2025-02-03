@@ -5,12 +5,11 @@ Author: coderthemes
 Email: support@coderthemes.com
 */
 
-
+import "preline";
 import { createIcons, icons } from "lucide";
 import gumshoeMin from "gumshoejs";
-import "preline/index";
 
-export default function initTheme() {
+function init() {
   createIcons({ icons });
 
   function initStickyNav() {
@@ -160,5 +159,4 @@ export default function initTheme() {
   adminNav();
 }
 
-
-
+init();
