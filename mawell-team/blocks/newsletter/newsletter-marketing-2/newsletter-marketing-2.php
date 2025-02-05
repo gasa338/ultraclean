@@ -2,7 +2,7 @@
 $data = get_field( 'newsletter_marketing_2' );
 if ( ! empty( $data ) ):
 	?>
-    <section class="relative h-full py-56">
+    <section class="relative h-full py-56" data-aos="fade-up">
         <div class="container">
 
 			<?php if ( ! empty( $data['image'] ) ): $image = get_image($data['image']) ?>

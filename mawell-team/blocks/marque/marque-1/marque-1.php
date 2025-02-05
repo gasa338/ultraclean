@@ -2,7 +2,7 @@
 $data = get_field( 'marque_1' );
 if ( ! empty( $data ) ):
 ?>
-<section>
+<section data-aos="fade-up">
     <div class="relative m-auto flex gap-28 overflow-hidden border border-default-200 py-8">
         <div class="marquee__group flex min-w-full flex-shrink-0 items-center justify-around gap-28">
             <?php foreach ( $data['data'] as $index => $item ) :  ?>

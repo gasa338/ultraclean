@@ -2,7 +2,7 @@
 $data = get_field( 'cta_marketing_3' );
 if ( ! empty( $data ) ):
 	?>
-    <section class="py-10 lg:py-20">
+    <section class="py-10 lg:py-20" data-aos="slide-up" >
         <div class="container">
             <div class="rounded-xl bg-primary/20 p-6">
                 <div class="grid items-center gap-6 md:grid-cols-3">

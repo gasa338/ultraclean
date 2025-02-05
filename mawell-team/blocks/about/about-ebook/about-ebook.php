@@ -3,7 +3,7 @@ $data = get_field( 'about_ebook' );
 if ( ! empty( $data ) ):
 	?>
     <!-- About Start -->
-    <section id="about" class="py-10 lg:py-20">
+    <section id="about" class="py-10 lg:py-20" data-aos="fade-up">
         <div class="container">
             <div class="grid items-center gap-2 lg:grid-cols-2">
 				<?php if ( ! empty( $data['image'] ) ): $image = get_image( $data['image'] ); ?>

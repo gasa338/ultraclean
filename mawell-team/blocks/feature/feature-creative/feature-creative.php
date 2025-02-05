@@ -1,7 +1,7 @@
 <?php $data = get_field( 'feature_creative' );
 if ( ! empty( $data ) ):
 	?>
-    <section id="features" class="py-10 lg:py-20">
+    <section id="features" class="py-10 lg:py-20" data-aos="fade-up">
         <div class="container">
             <div class="mb-10 flex items-end justify-between">
 				<?php if ( ! empty( $data['top_title'] ) || ! empty( $data['title'] ) || ! empty( $data['description'] ) ): ?>
@@ -26,7 +26,7 @@ if ( ! empty( $data ) ):
 			<?php if ( ! empty( $data['features'] ) ): ?>
                 <div class="grid grid-cols-1 items-center overflow-hidden rounded-md gap-3 md:grid-cols-2 xl:grid-cols-3">
 					<?php foreach ( $data['features'] as $index => $feature ) : ?>
-                        <div class="group h-full border border-default-200 bg-green-100">
+                        <div class="group h-full border border-default-200 bg-green-100" data-aos="fade-up">
                             <div class="p-8 sm:p-10">
 								<?php if ( ! empty( $feature['icon'] ) ): ?>
                                     <span class=""><i data-lucide="<?php echo $feature['icon'] ?>"
@@ -57,7 +57,7 @@ if ( ! empty( $data ) ):
 
 
 	        <?php if ( ! empty( $data['link'] ) ): ?>
-            <div class="mt-4 flex justify-center">
+            <div class="mt-4 flex justify-center" data-aos="fade-up">
                 <a href="<?php echo $data['link']['url']; ?>"
                    class="inline-flex items-center justify-center gap-2 rounded-md border border-primary/50 bg-primary px-6 py-2 text-white transition-all duration-300 hover:bg-primary/10 hover:text-primary">
 			        <?php echo $data['link']['title']; ?>

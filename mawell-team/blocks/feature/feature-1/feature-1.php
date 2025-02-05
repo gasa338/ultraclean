@@ -2,17 +2,17 @@
 $data = get_field( 'feature_1' );
 if ( ! empty( $data ) ):
 	?>
-    <section id="features" class="pt-10 lg:pt-20">
+    <section id="features" class="pt-10 lg:pt-20" data-aos="fade-up">
         <div class="container">
             <div class="grid items-center gap-6 lg:grid-cols-2">
-                <div>
+                <div data-aos="fade-left">
 					<?php if ( ! empty( $data['top_title'] ) ): ?>
                         <span class="rounded-md border border-primary bg-primary/20 px-3 py-1 text-xs font-medium uppercase tracking-wider text-primary">
                     <?php echo $data['top_title']; ?>
                 </span>
 					<?php endif; ?>
 					<?php if ( ! empty( $data['title'] ) ): ?>
-                        <h2 class="mt-4 text-4xl/tight font-medium text-default-950">
+                        <h2 class="mt-4 text-4xl/tight font-medium text-default-950" >
 							<?php echo $data['title']; ?>
                         </h2>
 					<?php endif; ?>
@@ -33,7 +33,7 @@ if ( ! empty( $data ) ):
                 </div>
 
 				<?php if ( ! empty( $data['image'] ) ): $image = get_image( $data['image'] ); ?>
-                    <div>
+                    <div data-aos="fade-right">
                         <img
                                 src="<?php echo $image['url']; ?>"
                                 class="h-full w-full rounded-lg"

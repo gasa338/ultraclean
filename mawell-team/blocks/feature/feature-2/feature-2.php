@@ -2,11 +2,11 @@
 $data = get_field( 'feature_2' );
 if ( ! empty( $data ) ):
 	?>
-    <section class="py-10 lg:py-20">
+    <section class="py-10 lg:py-20" data-aos="slide-up">
         <div class="container">
             <div class="grid items-center gap-6 lg:grid-cols-2">
 				<?php if ( ! empty( $data['image'] ) ): $image = get_image( $data['image'] ); ?>
-                    <div class="order-2 md:order-1">
+                    <div class="order-2 md:order-1" data-aos="slide-up">
                         <img
                                 src="<?php echo $image['url']; ?>"
                                 class="h-full w-full rounded-lg"
@@ -15,7 +15,7 @@ if ( ! empty( $data ) ):
                     </div>
 				<?php endif; ?>
 
-                <div class="order-1 md:order-2">
+                <div class="order-1 md:order-2" data-aos="slide-up">
 					<?php if ( ! empty( $data['top_title'] ) ): ?>
                         <span class="rounded-md border border-primary bg-primary/20 px-3 py-1 text-xs font-medium uppercase tracking-wider text-primary">
                     <?php echo $data['top_title']; ?>

@@ -220,8 +220,6 @@ function maxxwell_scripts()
 
 	// Dodavanje eksternog CSS fajla (Tabler Icons)
 	wp_enqueue_style('tabler-icons', get_template_directory_uri() . '/assets/dist/css/tabler-icons.min.css', array(), null);
-
-
 	wp_enqueue_script('maxxwell-navigation', get_template_directory_uri() . '/assets/dist/js/navigation.js', array(), _S_VERSION, true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -229,18 +227,36 @@ function maxxwell_scripts()
     }
 
     /** enqueue  custom file CSS */
-    wp_enqueue_script('alpine-js', get_template_directory_uri() . '/assets/dist/js/gallery.js', array(), _S_VERSION, true);
 
-	// Dobijanje URL-a teme ili child teme
-	$theme_url = get_template_directory_uri(); // Ako koristite child temu, zamenite sa get_stylesheet_directory_uri()
 
-	// Enqueue JavaScript fajlova za frontend
-//	wp_enqueue_script('auth-js', get_template_directory_uri() . '/assets/dist/js/auth.js', array('jquery'), null, true);
-//	wp_enqueue_script('glightbox-js', get_template_directory_uri() . '/assets/dist/js/glightbox.js', array('jquery'), null, true);
+    wp_enqueue_script('gallery', get_template_directory_uri() . '/assets/dist/js/gallery.js', array(), _S_VERSION, true);
 	wp_enqueue_script('head-js', get_template_directory_uri() . '/assets/dist/js/head.js', array('jquery'), null, true);
 	wp_enqueue_script('swiper-js', get_template_directory_uri() . '/assets/dist/js/swiper.js', array('jquery'), null, true);
 	wp_enqueue_script('theme-js', get_template_directory_uri() . '/assets/dist/js/theme.js', array('jquery'), null, true);
 
+	// Učitavanje AOS CSS-a
+	wp_enqueue_style('aos-css', 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css', array(), '2.3.4');
+
+	// Učitavanje AOS JS-a (bez automatskog prikazivanja u HTML-u)
+	wp_enqueue_script('aos-js', 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js', array(), '2.3.4', true);
+
+	// Dodavanje inicijalizacije u footer
+	wp_add_inline_script('aos-js', "
+        let aosLoaded = false;
+        function loadAOS() {
+            if (!aosLoaded) {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-in-out',
+                    once: true,
+                    mirror: false,
+                    offset: 100
+                });
+                aosLoaded = true;
+            }
+        }
+        window.addEventListener('scroll', loadAOS, { once: true });
+    ");
 
 }
 add_action('wp_enqueue_scripts', 'maxxwell_scripts');
@@ -278,6 +294,13 @@ function tailwind_dashboards_script($hook): void
 add_action('admin_enqueue_scripts', 'tailwind_dashboards_script');
 /** ======================================================================= */
 
+function add_defer_to_aos_script($tag, $handle) {
+//	if ($handle === 'aos-js') {
+		return str_replace('src', 'defer src', $tag);
+//	}
+//	return $tag;
+}
+add_filter('script_loader_tag', 'add_defer_to_aos_script', 10, 2);
 
 /**
  * Walker_Nav_Menu
